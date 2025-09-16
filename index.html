@@ -1,5 +1,110 @@
-<!-- NAV -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heron Brass Quintet</title>
+<meta name="description" content="Official website of the Heron Brass Quintet. Explore concerts, media, members, videos, and biography.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* BASIC RESET */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins', sans-serif; line-height:1.6; background:#f0f0f0; color:#222; scroll-behavior:smooth; }
+a { text-decoration:none; color:inherit; transition:0.3s; }
+a:hover { color:#0077cc; }
+
+/* NAVIGATION */
+nav { position:sticky; top:0; background:#fff; box-shadow:0 3px 8px rgba(0,0,0,0.06); z-index:100; display:flex; justify-content:center; gap:30px; padding:20px; flex-wrap:wrap; align-items:center; }
+nav .logo { font-family:'Montserrat', sans-serif; font-size:1.5rem; font-weight:700; margin-right:auto; }
+nav a { font-weight:500; font-size:0.95rem; padding:5px 0; position:relative; }
+nav a.active::after { content:''; position:absolute; bottom:-5px; left:0; width:100%; height:2px; background:#0077cc; border-radius:2px; }
+
+/* HERO */
+.hero { position:relative; width:100%; height:90vh; display:flex; align-items:flex-end; justify-content:center; text-align:center; color:#fff; background:url('images/quintet-hero.jpg') center/cover no-repeat; }
+.hero::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+.hero-content { position:relative; z-index:1; animation:fadeUp 1s ease forwards; margin-bottom:80px; }
+.hero h1 { font-family:'Montserrat', sans-serif; font-size:3rem; margin-bottom:10px; }
+.hero .title { font-size:1.3rem; margin-bottom:15px; color:#ddd; }
+.hero .quote { font-style:italic; font-size:1.1rem; color:#eee; }
+
+/* Header social icons */
+.header-social { position:absolute; top:20px; right:30px; z-index:10; }
+.header-social a { color:#fff; font-size:1.4rem; margin-left:15px; transition:color 0.3s; }
+.header-social a:hover { color:#f5a623; }
+
+@keyframes fadeUp { 0% {opacity:0; transform:translateY(30px);} 100%{opacity:1; transform:translateY(0);} }
+
+/* SECTIONS */
+section { max-width:1100px; margin:60px auto; padding:50px 30px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.05); opacity:0; transform:translateY(30px); transition:opacity 0.6s ease, transform 0.6s ease; }
+section.visible { opacity:1; transform:translateY(0); }
+section h2 { text-align:center; font-family:'Montserrat', sans-serif; font-size:2rem; margin-bottom:40px; }
+
+/* Unified Section Backgrounds */
+#concerts, #media, #about, #members, #videos, #contact { background:#f7f9fc; border-radius:12px; }
+
+/* CONCERTS */
+.concert-list { list-style:none; padding:0; margin:0; }
+.concert-item { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; background:#f9f9f9; padding:20px; margin-bottom:20px; border-radius:10px; box-shadow:0 3px 12px rgba(0,0,0,0.08); transition:transform 0.3s, box-shadow 0.3s; }
+.concert-item:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+.concert-details h3 { font-size:1.3rem; margin-bottom:5px; }
+.concert-details time { font-style:italic; color:#777; }
+.concert-details p { color:#555; }
+.concert-cta a, .future-btn { padding:10px 18px; background:#0077cc; color:#fff; border-radius:6px; font-weight:500; display:inline-block; transition:background 0.3s; }
+.concert-cta a:hover, .future-btn:hover { background:#005fa3; }
+
+/* MEDIA GALLERY */
+.media-gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); grid-auto-rows:350px; gap:25px; }
+.media-gallery img { width:100%; height:100%; object-fit:cover; border-radius:12px; transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.media-gallery img:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.15); }
+
+/* BIOGRAPHY */
+.about p { font-size:1.1rem; color:#555; margin-bottom:20px; text-align:justify; }
+
+/* MEMBERS */
+.members { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
+.member { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 3px 12px rgba(0,0,0,0.08); transition:transform 0.3s, box-shadow 0.3s; }
+.member:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+.member img { width:100%; height:250px; object-fit:cover; border-radius:12px; margin-bottom:15px; }
+.member h3 { font-size:1.2rem; margin-bottom:5px; }
+.member p { font-size:1rem; color:#555; }
+
+/* VIDEO GALLERY */
+.video-gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:25px; }
+.video-item { background:#000; height:200px; border-radius:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; font-size:1rem; }
+
+/* VIDEO MODAL */
+.video-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); align-items:center; justify-content:center; z-index:1000; }
+.video-modal-content { position:relative; width:80%; max-width:900px; }
+.video-modal iframe { width:100%; height:500px; border:none; border-radius:12px; }
+.video-modal .close-btn { position:absolute; top:-15px; right:-15px; font-size:2rem; color:#fff; cursor:pointer; }
+
+/* CONTACT FORM */
+form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto; }
+input, textarea { padding:14px; border:1px solid #ccc; border-radius:8px; font-size:1rem; }
+button { padding:14px; background:#0077cc; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:1rem; transition:background 0.3s; }
+button:hover { background:#005fa3; }
+
+/* FOOTER */
+footer { text-align:center; font-size:0.85rem; color:#888; padding:40px 20px; background:#f7f9fc; }
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1 { font-size:2.2rem; }
+  .hero .title { font-size:1.2rem; }
+  .hero .quote { font-size:1rem; }
+  .concert-item { flex-direction:column; align-items:flex-start; }
+  .media-gallery, .members, .video-gallery { grid-template-columns:1fr; grid-auto-rows:250px; }
+}
+
+/* Fade up animation already included */
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
 <nav id="navbar">
+  <div class="logo">Heron Brass Quintet</div>
   <a href="#concerts">Concerts</a>
   <a href="#media">Media</a>
   <a href="#about">About</a>
@@ -11,145 +116,5 @@
 <!-- HERO -->
 <header class="hero">
   <div class="header-social">
-    <a href="https://www.instagram.com/rbranchbiescas/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/heronbrass" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-  </div>
-  <div class="hero-content">
-    <h1>Heron Brass Quintet</h1>
-    <p class="title">Brass Quintet • Chamber Music Ensemble</p>
-    <div class="quote">“Music connects us all.”</div>
-  </div>
-</header>
-
-<!-- CONCERTS -->
-<section id="concerts">
-  <h2>Upcoming Concerts</h2>
-  <ul class="concert-list">
-    <li class="concert-item">
-      <div class="concert-details">
-        <h3>Heron Brass Performance</h3>
-        <time datetime="2025-09-19T19:30">Friday, September 19, 2025 • 7:30 PM</time>
-        <p>St Saviour's Church, Brockley Rise, London</p>
-      </div>
-    </li>
-    <li class="concert-item">
-      <div class="concert-details">
-        <h3>Dido and Aeneas Performance</h3>
-        <time datetime="2025-09-20T19:00">Saturday, September 20, 2025 • 7:00 PM</time>
-        <p>St Mary’s, Hendon, London</p>
-      </div>
-    </li>
-  </ul>
-</section>
-
-<!-- MEDIA GALLERY -->
-<section id="media">
-  <h2>Media Gallery</h2>
-  <div class="media-gallery">
-    <img src="images/concert1.jpg" alt="Concert 1">
-    <img src="images/concert2.jpg" alt="Concert 2">
-    <img src="images/concert3.jpg" alt="Concert 3">
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>Biography</h2>
-  <p>The Heron Brass Quintet is a professional chamber music ensemble...</p>
-</section>
-
-<!-- MEMBERS -->
-<section id="members">
-  <h2>Members</h2>
-  <div class="members">
-    <div class="member">
-      <img src="images/member1.jpg" alt="Member 1">
-      <h3>Ramon Branch Biescas</h3>
-      <p>Tuba Player</p>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEOS -->
-<section id="videos">
-  <h2>Videos</h2>
-  <div class="video-gallery">
-    <div class="video-item" data-video="https://www.youtube.com/embed/VIDEO_ID_1"></div>
-    <div class="video-item" data-video="https://www.youtube.com/embed/VIDEO_ID_2"></div>
-  </div>
-</section>
-<div id="videoModal" class="video-modal">
-  <div class="video-modal-content">
-    <span class="close-btn">&times;</span>
-    <iframe id="videoFrame" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-    <p id="formFeedback" aria-live="polite"></p>
-  </form>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div>© Heron Brass Quintet 2025</div>
-</footer>
-
-<!-- SCRIPTS -->
-<script>
-// Intersection Observer for sections
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.2 });
-sections.forEach(sec => observer.observe(sec));
-
-// Navigation active link
-const navLinks = document.querySelectorAll('nav a');
-window.addEventListener('scroll', () => {
-  const scrollPos = window.scrollY + 120;
-  sections.forEach((sec, i) => {
-    if(scrollPos >= sec.offsetTop && (i === sections.length-1 || scrollPos < sections[i+1].offsetTop)){
-      navLinks.forEach(link => link.classList.remove('active'));
-      document.querySelector(`nav a[href='#${sec.id}']`).classList.add('active');
-    }
-  });
-});
-
-// Video modal functionality
-const videoItems = document.querySelectorAll('.video-item');
-const videoModal = document.getElementById('videoModal');
-const videoFrame = document.getElementById('videoFrame');
-const closeBtn = document.querySelector('.close-btn');
-videoItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const videoURL = item.getAttribute('data-video');
-    videoFrame.src = videoURL + '?autoplay=1';
-    videoModal.style.display = 'flex';
-  });
-});
-closeBtn.addEventListener('click', () => {
-  videoModal.style.display = 'none';
-  videoFrame.src = '';
-});
-window.addEventListener('click', e => {
-  if(e.target === videoModal){
-    videoModal.style.display = 'none';
-    videoFrame.src = '';
-  }
-});
-
-// Contact form submission (example, adapt to Formspree or backend)
-document.getElementById('contactForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  document.getElementById('formFeedback').textContent = 'Message sent!';
-  e.target.reset();
-});
-</script>
+    <a href="https://www.instagram.com/rbranchbiescas/" target="_blank"><i class="fab fa-instagram"></i></a>
+   
