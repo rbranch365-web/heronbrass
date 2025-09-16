@@ -117,4 +117,168 @@ footer { text-align:center; font-size:0.85rem; color:#888; padding:40px 20px; ba
 <header class="hero">
   <div class="header-social">
     <a href="https://www.instagram.com/rbranchbiescas/" target="_blank"><i class="fab fa-instagram"></i></a>
-   
+    <a href="https://www.facebook.com/heronbrass" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.youtube.com/channel/UCxNV_toj5p8wQSQ51qzIUPA" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+  <div class="hero-content">
+    <h1>Heron Brass Quintet</h1>
+    <p class="title">Brass Quintet • Chamber Music Ensemble</p>
+    <div class="quote">“Music connects us all.”</div>
+  </div>
+</header>
+
+<!-- CONCERTS -->
+<section id="concerts">
+  <h2>Upcoming Concerts</h2>
+  <ul class="concert-list">
+    <li class="concert-item">
+      <div class="concert-details">
+        <h3>Heron Brass Performance</h3>
+        <time datetime="2025-09-19T19:30">Friday, September 19, 2025 • 7:30 PM</time>
+        <p>St Saviour's Church, Brockley Rise, London</p>
+      </div>
+    </li>
+    <li class="concert-item">
+      <div class="concert-details">
+        <h3>Dido and Aeneas Performance</h3>
+        <time datetime="2025-09-20T19:00">Saturday, September 20, 2025 • 7:00 PM</time>
+        <p>St Mary’s, Hendon, London</p>
+      </div>
+    </li>
+    <!-- Add more concerts as needed -->
+  </ul>
+</section>
+
+<!-- MEDIA -->
+<section id="media">
+  <h2>Media Gallery</h2>
+  <div class="media-gallery">
+    <img src="images/concert1.jpg" alt="Concert 1">
+    <img src="images/concert2.jpg" alt="Concert 2">
+    <img src="images/concert3.jpg" alt="Concert 3">
+    <!-- Add more images as needed -->
+  </div>
+</section>
+
+<!-- BIOGRAPHY -->
+<section id="about">
+  <h2>Biography</h2>
+  <p>Heron Brass Quintet is a professional chamber ensemble dedicated to high-quality brass performance...</p>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <h2>Members</h2>
+  <div class="members">
+    <div class="member">
+      <img src="images/member1.jpg" alt="Member 1">
+      <h3>Ramon Branch Biescas</h3>
+      <p>Tuba</p>
+    </div>
+    <div class="member">
+      <img src="images/member2.jpg" alt="Member 2">
+      <h3>Member 2 Name</h3>
+      <p>Trumpet</p>
+    </div>
+    <!-- Add all members -->
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <h2>Videos</h2>
+  <div class="video-gallery">
+    <div class="video-item" data-video="https://www.youtube.com/embed/B9JWy9XOg8A">Concert 1</div>
+    <div class="video-item" data-video="https://www.youtube.com/embed/XSDuZBr4JvM">Concert 2</div>
+    <!-- Add more video items -->
+  </div>
+</section>
+
+<div id="videoModal" class="video-modal">
+  <div class="video-modal-content">
+    <span class="close-btn">&times;</span>
+    <iframe id="videoFrame" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <input type="hidden" name="_subject" value="New website message">
+    <input type="hidden" name="_replyto" id="_replyto">
+    <input type="text" name="_gotcha" style="display:none">
+    <button type="submit">Send Message</button>
+    <p id="formFeedback" aria-live="polite" style="margin-top:.75rem;"></p>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © Heron Brass Quintet 2025
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+// Intersection Observer for section fade-in
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.2 });
+sections.forEach(sec => observer.observe(sec));
+
+// Navigation active links
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let scrollPos = window.scrollY + 120;
+  sections.forEach(sec => {
+    if(scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight){
+      navLinks.forEach(link => link.classList.remove('active'));
+      document.querySelector(`nav a[href="#${sec.id}"]`).classList.add('active');
+    }
+  });
+});
+
+// Contact Form (Formspree)
+(function(){
+  const endpoint = "https://formspree.io/f/mpwjeryg";
+  const form = document.getElementById('contactForm');
+  const feedback = document.getElementById('formFeedback');
+  const replyToInput = document.getElementById('_replyto');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    feedback.textContent = 'Sending…';
+    feedback.style.color = '#333';
+    if(form._gotcha.value){ feedback.textContent='Spam detected'; feedback.style.color='crimson'; return; }
+    replyToInput.value = form.email.value;
+    const formData = new FormData(form);
+    try{
+      const res = await fetch(endpoint,{method:'POST',body:formData,headers:{'Accept':'application/json'}});
+      if(res.ok){ feedback.textContent='✅ Thanks — your message has been sent!'; feedback.style.color='#0a6f44'; form.reset();}
+      else{ feedback.textContent='Error sending message'; feedback.style.color='crimson';}
+    } catch { feedback.textContent='Network error'; feedback.style.color='crimson'; }
+  });
+})();
+
+// Video Modal
+const videoItems = document.querySelectorAll('.video-item');
+const videoModal = document.getElementById('videoModal');
+const videoFrame = document.getElementById('videoFrame');
+const closeBtn = document.querySelector('.close-btn');
+
+videoItems.forEach(item => {
+  item.addEventListener('click', () => {
+    videoFrame.src = item.getAttribute('data-video') + '?autoplay=1';
+    videoModal.style.display = 'flex';
+  });
+});
+closeBtn.addEventListener('click', () => { videoModal.style.display='none'; videoFrame.src=''; });
+window.addEventListener('click', e => { if(e.target===videoModal){ videoModal.style.display='none'; videoFrame.src=''; }});
+</script>
+
+</body>
+</html>
