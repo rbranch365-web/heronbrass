@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heron Brass Quintet</title>
-  <meta name="description" content="Official website of the Heron Brass Quintet. Explore concerts, media, biography, and contact us.">
+  <meta name="description" content="Official website of the Heron Brass Quintet. Explore concerts, media, biography, members, videos, and contact.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -13,7 +13,6 @@
     a { text-decoration: none; color: inherit; transition: 0.3s; }
     a:hover { color: #0077cc; }
 
-    /* NAVIGATION */
     nav {
       position: sticky;
       top: 0;
@@ -26,102 +25,44 @@
       padding: 20px;
     }
     nav a { font-weight: 500; font-size: 0.95rem; padding: 5px 0; position: relative; }
-    nav a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: #0077cc;
-      border-radius: 2px;
-    }
+    nav a.active::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: #0077cc; border-radius: 2px; }
 
-    /* HERO */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 90vh;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-      background: url('images/quintet-hero.jpg') center 35% / cover no-repeat;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 1s ease forwards;
-      margin-bottom: 80px;
-    }
+    .hero { position: relative; width: 100%; height: 90vh; display: flex; align-items: flex-end; justify-content: center; text-align: center; color: #fff; background: url('images/quintet-hero.jpg') center 35% / cover no-repeat; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+    .hero-content { position: relative; z-index: 1; animation: fadeUp 1s ease forwards; margin-bottom: 80px; }
     .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; margin-bottom: 10px; letter-spacing: 1px; }
     .hero .title { font-size: 1.3rem; margin-bottom: 15px; color: #ddd; }
     .hero .quote { font-style: italic; font-size: 1.1rem; color: #eee; }
 
-    .header-social {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      z-index: 10;
-    }
+    .header-social { position: absolute; top: 20px; right: 30px; z-index: 10; }
     .header-social a { color: #fff; font-size: 1.4rem; margin-left: 15px; transition: color 0.3s; }
     .header-social a:hover { color: #f5a623; }
 
     @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
 
-    /* SECTIONS */
-    section {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 50px 30px;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+    section { max-width: 1100px; margin: 60px auto; padding: 50px 30px; border-radius: 16px; background: #fff; box-shadow: 0 8px 30px rgba(0,0,0,0.05); opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     section.visible { opacity: 1; transform: translateY(0); }
     section h2 { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2.2rem; margin-bottom: 40px; color: #0077cc; }
 
-    /* CONCERT LIST */
     .concert-list { list-style: none; padding: 0; margin: 0; }
-    .concert-item {
-      background: #f9f9f9;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+    .concert-item { background: #f9f9f9; padding: 20px; margin-bottom: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; }
     .concert-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
     .concert-details h3 { font-size: 1.3rem; margin-bottom: 5px; color: #333; }
     .concert-details time { font-style: italic; color: #777; }
     .concert-details p { color: #555; }
 
-    /* MEDIA GALLERY */
     .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-auto-rows: 250px; gap: 20px; }
     .media-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
     .media-gallery img:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
 
-    /* ABOUT */
     .about p { font-size: 1.05rem; color: #444; margin-bottom: 20px; text-align: justify; line-height: 1.7; }
 
-    /* MEMBERS */
     .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 30px; }
     .member { text-align: center; padding: 20px; background: #f9fafc; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
     .member img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; }
     .member h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 8px; }
     .member p { color: #555; font-size: 0.95rem; }
 
-    /* CONTACT */
     form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
     input, textarea { padding: 14px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
     button { padding: 14px; background: #0077cc; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
@@ -130,36 +71,45 @@
     footer { text-align: center; font-size: 0.85rem; color: #888; padding: 40px 20px; background: #f7f9fc; }
     footer .social a { margin: 0 12px; font-weight: 500; }
 
+    /* VIDEO GALLERY */
+    .video-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+    .video-item { cursor: pointer; overflow: hidden; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+    .video-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .video-item:hover img { transform: scale(1.05); }
+    .video-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000; }
+    .video-modal-content { position: relative; width: 90%; max-width: 800px; }
+    .video-modal iframe { width: 100%; height: 450px; border-radius: 12px; }
+    .close-btn { position: absolute; top: -35px; right: 0; font-size: 2rem; color: white; cursor: pointer; }
+
     @media(max-width:768px){
       .hero h1 { font-size: 2.2rem; }
       .hero .title { font-size: 1.1rem; }
       .hero .quote { font-size: 1rem; }
-      .media-gallery { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+      .media-gallery, .video-gallery { grid-template-columns: 1fr; grid-auto-rows: 220px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="navbar">
     <a href="#concerts">Concerts</a>
     <a href="#media">Media</a>
     <a href="#about">About</a>
     <a href="#members">Members</a>
+    <a href="#videos">Videos</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="header-social">
-      <a href="https://www.instagram.com/heronbrass" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.instagram.com/rbranchbiescas/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/heronbrass" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
     </div>
-
     <div class="hero-content">
       <h1>Heron Brass Quintet</h1>
-      <p class="title">Trumpets • Horn • Trombone • Tuba</p>
-      <div class="quote">“Bringing brass to life through chamber music”</div>
+      <p class="title">Brass Quintet • Chamber Music Ensemble</p>
+      <div class="quote">“Music connects us all.”</div>
     </div>
   </header>
 
@@ -171,111 +121,89 @@
         <div class="concert-details">
           <h3>Heron Brass Performance</h3>
           <time datetime="2025-09-19T19:30">Friday, September 19, 2025 • 7:30 PM</time>
-          <p>St Saviour's Church, London</p>
+          <p>St Saviour's Church, Brockley Rise, London</p>
         </div>
       </li>
       <li class="concert-item">
         <div class="concert-details">
-          <h3>Stour Valley Arts Concert Series</h3>
-          <time datetime="2025-10-26T19:30">Sunday, October 26, 2025 • 7:30 PM</time>
-          <p>UK</p>
-        </div>
-      </li>
-      <li class="concert-item">
-        <div class="concert-details">
-          <h3>Vilaseca Concert</h3>
-          <time datetime="2025-11-09T17:00">Sunday, November 9, 2025 • 5:00 PM</time>
-          <p>Tarragona, Spain</p>
+          <h3>Dido and Aeneas Performance</h3>
+          <time datetime="2025-09-20T19:00">Saturday, September 20, 2025 • 7:00 PM</time>
+          <p>St Mary’s, Hendon, London</p>
         </div>
       </li>
     </ul>
+    <div style="text-align: right; margin-top: 20px;">
+      <a href="future-concerts.html" class="future-btn">Future Concerts</a>
+    </div>
   </section>
 
   <!-- MEDIA -->
   <section id="media">
     <h2>Media Gallery</h2>
     <div class="media-gallery">
-      <img src="images/concert1.jpg" alt="Performance">
-      <img src="images/concert2.jpg" alt="Rehearsal">
-      <img src="images/concert3.jpg" alt="Group photo">
-      <img src="images/concert4.jpg" alt="Live concert">
+      <img src="images/concert1.jpg" alt="Concert 1">
+      <img src="images/concert2.jpg" alt="Concert 2">
+      <img src="images/concert3.jpg" alt="Concert 3">
+      <img src="images/concert4.jpg" alt="Concert 4">
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="about">
     <h2>About Us</h2>
-    <p>The Heron Brass Quintet is a dynamic chamber ensemble made up of talented young brass players dedicated to exploring the vast brass quintet repertoire. Formed in London, the group has already made an impact through performances in prestigious venues and festivals across the UK and abroad.</p>
-    <p>With a repertoire spanning Renaissance transcriptions to contemporary works, Heron Brass showcases the versatility of brass instruments, captivating audiences with a unique blend of precision, power, and artistry.</p>
-    <p>The ensemble recently reached the semifinal round of the Royal Overseas League competition and continues to expand its presence through concerts, competitions, and educational projects.</p>
+    <p>The Heron Brass Quintet is a professional chamber ensemble performing across Europe. Our members are experienced orchestral and chamber musicians committed to bringing brass music to audiences with creativity and passion.</p>
   </section>
 
   <!-- MEMBERS -->
   <section id="members">
-    <h2>Meet the Members</h2>
+    <h2>Members</h2>
     <div class="members">
       <div class="member">
-        <img src="images/member1.jpg" alt="Trumpet Player">
-        <h3>Member One</h3>
+        <img src="images/member1.jpg" alt="Ramon Branch Biescas">
+        <h3>Ramon Branch Biescas</h3>
+        <p>Tuba & Artistic Director</p>
+      </div>
+      <div class="member">
+        <img src="images/member2.jpg" alt="Member 2">
+        <h3>Member 2</h3>
         <p>Trumpet</p>
       </div>
-      <div class="member">
-        <img src="images/member2.jpg" alt="Trumpet Player">
-        <h3>Member Two</h3>
-        <p>Trumpet</p>
-      </div>
-      <div class="member">
-        <img src="images/member3.jpg" alt="Horn Player">
-        <h3>Member Three</h3>
-        <p>Horn</p>
-      </div>
-      <div class="member">
-        <img src="images/member4.jpg" alt="Trombone Player">
-        <h3>Member Four</h3>
-        <p>Trombone</p>
-      </div>
-      <div class="member">
-        <img src="images/member5.jpg" alt="Tuba Player">
-        <h3>Member Five</h3>
-        <p>Tuba</p>
-      </div>
+      <!-- Add more members -->
     </div>
   </section>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <h2>Videos</h2>
+    <div class="video-gallery">
+      <div class="video-item" data-video="https://www.youtube.com/embed/VIDEO_ID_1" data-id="VIDEO_ID_1"></div>
+      <div class="video-item" data-video="https://www.youtube.com/embed/VIDEO_ID_2" data-id="VIDEO_ID_2"></div>
+      <!-- Add more videos -->
+    </div>
+  </section>
+
+  <!-- VIDEO MODAL -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+      <span class="close-btn">&times;</span>
+      <iframe id="videoFrame" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
 
   <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
     <form id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <input type="text" name="name" id="name" placeholder="Your Name" required>
+      <input type="email" name="email" id="email" placeholder="Your Email" required>
+      <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+      <input type="hidden" name="_subject" value="New website message">
+      <input type="hidden" name="_replyto" id="_replyto">
+      <input type="text" name="_gotcha" style="display:none">
       <button type="submit">Send Message</button>
       <p id="formFeedback" aria-live="polite" style="margin-top:.75rem;"></p>
     </form>
   </section>
 
   <footer>
-    <div>© Heron Brass Quintet 2025</div>
-  </footer>
-
-  <script>
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.2 });
-    sections.forEach(sec => observer.observe(sec));
-
-    const navLinks = document.querySelectorAll('nav a');
-    window.addEventListener('scroll', () => {
-      let fromTop = window.scrollY + 120;
-      navLinks.forEach(link => {
-        let section = document.querySelector(link.getAttribute('href'));
-        if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-          navLinks.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+   
